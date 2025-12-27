@@ -1,9 +1,21 @@
 import React from "react";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
-  const { user, logout } = useAuth();
+  const { user, signout } = useAuth();
+  const navigate = useNavigate()
+
+  const handleSignOut = () => {
+    signout()
+      .then(() => {
+      navigate('login')
+      })
+      .catch(error => {
+      console.log(error)
+    })
+  }
+
 
   const navOptions = (
     <>
@@ -93,7 +105,7 @@ const Navbar = () => {
                     alt="User Avatar"
                     src={
                       user?.photoURL ||
-                      "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                      'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg'
                     }
                   />
                 </div>
@@ -109,7 +121,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <button onClick={logout}>Logout</button>
+                  <button onClick={handleSignOut}>Logout</button>
                 </li>
               </ul>
             </div>
