@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 const BookingsTable = () => {
-      return (
-            <div>
-                  
-            </div>
-      );
+  return (
+    <div>
+      <h1>Tanvir</h1>
+    </div>
+  );
 };
 
 export default BookingsTable;

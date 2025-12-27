@@ -73,11 +73,7 @@ const OrganizerSpotlight = () => {
                 {organizer.description}
               </p>
 
-              <div className="mt-auto">
-                <button className="btn btn-outline btn-sm h-10 px-6 rounded-full border-gray-200 text-gray-700 hover:bg-black hover:text-white hover:border-black transition-all normal-case font-medium w-full">
-                  View Profile
-                </button>
-              </div>
+
             </div>
           ))}
         </div>

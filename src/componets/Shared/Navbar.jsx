@@ -115,18 +115,30 @@ const Navbar = () => {
             </div>
           ) : (
             <div className="flex items-center gap-2">
-              <Link
+              <NavLink
                 to="/login"
-                className="px-6 py-2 rounded-full font-medium transition-all duration-300 hover:bg-primary hover:text-primary-content text-base-content/80"
+                className={({ isActive }) =>
+                  `px-6 py-2 rounded-full transition-all duration-300 font-medium ${
+                    isActive
+                      ? "bg-primary text-primary-content font-bold"
+                      : "hover:bg-primary hover:text-primary-content text-base-content/80"
+                  }`
+                }
               >
                 Login
-              </Link>
-              <Link
+              </NavLink>
+              <NavLink
                 to="/register"
-                className="btn btn-primary btn-sm rounded-full text-primary-content px-6 font-bold h-10 min-h-[2.5rem]"
+                className={({ isActive }) =>
+                  `px-6 py-2 rounded-full transition-all duration-300 font-medium ${
+                    isActive
+                      ? "bg-primary text-primary-content font-bold"
+                      : "hover:bg-primary hover:text-primary-content text-base-content/80"
+                  }`
+                }
               >
                 Register
-              </Link>
+              </NavLink>
             </div>
           )}
         </div>
