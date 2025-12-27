@@ -94,7 +94,7 @@ const Register = () => {
             <form onSubmit={handleSubmit(handleRegistration)}>
               <fieldset className="fieldset">
                 {/* Name */}
-                <label className="label">Name</label>
+                <label className="label text-base-content">Name</label>
                 <input
                   type="text"
                   {...register('name', { required: true })}
@@ -107,7 +107,7 @@ const Register = () => {
                 )}
 
                 {/* Email */}
-                <label className="label">Email</label>
+                <label className="label text-base-content mt-2">Email</label>
                 <input
                   type="email"
                   {...register('email', { required: true })}
@@ -120,7 +120,7 @@ const Register = () => {
                 )}
 
                 {/* Photo */}
-                <label className="label">Photo</label>
+                <label className="label text-base-content mt-2">Photo</label>
                 <input
                   type="file"
                   {...register('photo', { required: true })}
@@ -132,7 +132,7 @@ const Register = () => {
                 )}
 
                 {/* Password */}
-                <label className="label">Password</label>
+                <label className="label text-base-content mt-2">Password</label>
                 <div className="relative">
                   <input
                     type={showPassword ? 'text' : 'password'}

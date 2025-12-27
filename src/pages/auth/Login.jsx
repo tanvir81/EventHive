@@ -79,7 +79,7 @@ const Login = () => {
             <form onSubmit={handleSubmit(handleLogin)}>
               <fieldset className="fieldset">
                 {/* Email */}
-                <label className="label">Email</label>
+                <label className="label text-base-content">Email</label>
                 <input
                   type="email"
                   {...register('email', { required: true })}
@@ -91,7 +91,7 @@ const Login = () => {
                 )}
 
                 {/* Password */}
-                <label className="label">Password</label>
+                <label className="label text-base-content mt-2">Password</label>
                 <div className="relative">
                   <input
                     type={showPassword ? 'text' : 'password'}
