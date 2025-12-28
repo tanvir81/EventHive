@@ -137,19 +137,19 @@ const Login = () => {
 
                 <button className="btn btn-primary w-full mt-6">Login</button>
               </fieldset>
-              <SocialLogin></SocialLogin>
-
-              <p className="py-4 text-center">
-                New to EventHive?{' '}
-                <Link
-                  state={location?.state}
-                  to="/register"
-                  className="text-[#80ba21] underline"
-                >
-                  Register
-                </Link>
-              </p>
             </form>
+            <SocialLogin></SocialLogin>
+
+            <p className="py-4 text-center">
+              New to EventHive?{' '}
+              <Link
+                state={location?.state}
+                to="/register"
+                className="text-[#80ba21] underline"
+              >
+                Register
+              </Link>
+            </p>
           </div>
         </div>
       </div>

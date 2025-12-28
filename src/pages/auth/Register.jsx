@@ -170,19 +170,19 @@ const Register = () => {
 
                 <button className="btn btn-primary mt-6">Register</button>
               </fieldset>
-              <SocialLogin></SocialLogin>
-
-              <p className="py-4 text-center">
-                Already have an account?{' '}
-                <Link
-                  state={location?.state}
-                  to="/login"
-                  className="text-[#80ba21] underline"
-                >
-                  Login
-                </Link>
-              </p>
             </form>
+            <SocialLogin></SocialLogin>
+
+            <p className="py-4 text-center">
+              Already have an account?{' '}
+              <Link
+                state={location?.state}
+                to="/login"
+                className="text-[#80ba21] underline"
+              >
+                Login
+              </Link>
+            </p>
           </div>
         </div>
       </div>
