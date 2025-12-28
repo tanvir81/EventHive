@@ -4,7 +4,6 @@ import { Trash2, Ticket, MapPin, CalendarDays } from "lucide-react";
 import useAuth from "../../hooks/useAuth";
 import UseAxiosSecure from "../../hooks/UseAxiosSecure";
 
-
 const Bookings = () => {
   const { user } = useAuth();
   const axiosSecure = UseAxiosSecure();
@@ -46,44 +45,36 @@ const Bookings = () => {
             refetch();
 
             Swal.fire({
-              title: "Booking Cancelled ✅",
+              title: "Booking Cancelled",
               icon: "success",
               html: `
-                <div style="text-align:left;font-size:14px">
-                  <p><b>Total Paid:</b> $${res.data.totalPaid}</p>
-                  <p><b>Refund Amount:</b> $${res.data.refundAmount}</p>
-                  ${
-                    res.data.deductionAmount > 0
-                      ? `<p style="color:red"><b>Deduction:</b> $${res.data.deductionAmount} (40%)</p>`
-                      : ""
-                  }
-                  <hr/>
-                  <p>${res.data.message}</p>
-                </div>
-              `,
+              <div style="text-align:left;font-size:14px">
+                <p><b>Total Paid:</b> $${res.data.totalPaid}</p>
+                <p><b>Refund Amount:</b> $${res.data.refundAmount}</p>
+                ${
+                  res.data.deductionAmount > 0
+                    ? `<p style="color:red"><b>Deduction:</b> $${res.data.deductionAmount} (40%)</p>`
+                    : ""
+                }
+                <hr/>
+                <p>${res.data.message}</p>
+              </div>
+            `,
               confirmButtonColor: "#10b981",
             });
           }
         } catch (error) {
+          console.error("Delete error:", error);
           Swal.fire({
-            title: "Cancellation Failed",
+            title: "Error!",
             text:
               error.response?.data?.message ||
               "Something went wrong during cancellation.",
             icon: "error",
           });
         }
-      } catch (error) {
-        console.error("Delete error:", error);
-        console.error("Error response:", error.response?.data);
-        Swal.fire({
-          title: "Error!",
-          text: error.response?.data?.message || error.message || "Failed to cancel booking.",
-          icon: "error",
-          customClass: { popup: "rounded-2xl", confirmButton: "rounded-xl" },
-        });
       }
-    }
+    });
   };
 
   // =======================
@@ -99,7 +90,6 @@ const Bookings = () => {
 
   return (
     <div className="w-full bg-white rounded-2xl border shadow-md overflow-hidden">
-      
       {/* HEADER */}
       <div className="p-6 border-b flex items-center justify-between">
         <div>
@@ -148,11 +138,6 @@ const Bookings = () => {
 
                   <td className="px-6 py-4">
                     <div className="flex gap-3 items-center">
-                      <img
-                        src={item.image}
-                        alt="event"
-                        className="w-12 h-12 rounded-xl object-cover"
-                      />
                       <div>
                         <p className="font-semibold">{item.eventName}</p>
                         <p className="text-xs text-gray-500 flex gap-1">
@@ -170,9 +155,7 @@ const Bookings = () => {
                     </div>
                   </td>
 
-                  <td className="px-6 py-4 font-bold">
-                    ${item.price}
-                  </td>
+                  <td className="px-6 py-4 font-bold">${item.price}</td>
 
                   <td className="px-6 py-4 text-right">
                     <button
