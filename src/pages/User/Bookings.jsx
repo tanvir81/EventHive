@@ -4,7 +4,6 @@ import { Trash2, Ticket, MapPin, CalendarDays } from "lucide-react";
 import useAuth from "../../hooks/useAuth";
 import UseAxiosSecure from "../../hooks/UseAxiosSecure";
 
-
 const Bookings = () => {
   const { user } = useAuth();
   const axiosSecure = UseAxiosSecure();
@@ -65,25 +64,19 @@ const Bookings = () => {
             });
           }
         } catch (error) {
+          console.error("Delete error:", error);
+          console.error("Error response:", error.response?.data);
           Swal.fire({
             title: "Cancellation Failed",
             text:
               error.response?.data?.message ||
+              error.message ||
               "Something went wrong during cancellation.",
             icon: "error",
           });
         }
-      } catch (error) {
-        console.error("Delete error:", error);
-        console.error("Error response:", error.response?.data);
-        Swal.fire({
-          title: "Error!",
-          text: error.response?.data?.message || error.message || "Failed to cancel booking.",
-          icon: "error",
-          customClass: { popup: "rounded-2xl", confirmButton: "rounded-xl" },
-        });
       }
-    }
+    });
   };
 
   // =======================
@@ -99,7 +92,6 @@ const Bookings = () => {
 
   return (
     <div className="w-full bg-white rounded-2xl border shadow-md overflow-hidden">
-      
       {/* HEADER */}
       <div className="p-6 border-b flex items-center justify-between">
         <div>
@@ -170,9 +162,7 @@ const Bookings = () => {
                     </div>
                   </td>
 
-                  <td className="px-6 py-4 font-bold">
-                    ${item.price}
-                  </td>
+                  <td className="px-6 py-4 font-bold">${item.price}</td>
 
                   <td className="px-6 py-4 text-right">
                     <button
